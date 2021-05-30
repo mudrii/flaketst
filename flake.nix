@@ -11,15 +11,15 @@
   #outputs = { nixpkgs, unstable, home-manager, ... }@inputs: {
   outputs = { self, nixpkgs, unstable, ... }@inputs: {
 
-    nixosConfiguration = {
+    nixosConfigurations = {
       nixtst = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        module = [(import ./configuration.nix)];
+        modules = [(import ./configuration.nix)];
         specialArgs = { inherit inputs; };
       };
     };
 
-  nixtst = self.nixosConfiguration.nixtst.config.system.build.toplevel;
+  nixtst = self.nixosConfigurations.nixtst.config.system.build.toplevel;
 
 #  defaultPackage.x86_64-linux = (builtins.head (builtins.attrValue self.nisosConfigurations)).pkgs;
   };
