@@ -14,7 +14,7 @@
     nixosConfigurations = {
       nixtst = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [(import ./configuration.nix)];
+        modules = [ (import ./configuration.nix) ];
         specialArgs = { inherit inputs; };
       };
     };
