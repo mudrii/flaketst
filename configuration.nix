@@ -13,8 +13,11 @@ in
 
   imports = [ ./hardware-configuration.nix ];
 
-  boot = { 
-    kernelPackages = pkgs.linuxPackages_latest;  
+  fileSystems."/" = {options = [ "noatime" "nodiratime" ];};
+  swapDevices = [{ device = "/.swapfile"; }];
+
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
 
     loader = {
       systemd-boot.enable = true;
@@ -77,7 +80,7 @@ in
       trash-cli
       exa
     ];
-    
+
     shellAliases = {
       cp = "cp -i";
       diff = "diff --color=auto";
@@ -125,7 +128,7 @@ in
   };
 
   nix = {
-    package = pkgs.nixFlakes; 
+    package = pkgs.nixFlakes;
     autoOptimiseStore = true;
     allowedUsers = [ "@wheel" ];
     trustedUsers = [ "@wheel" ];
@@ -134,7 +137,7 @@ in
       experimental-features = nix-command flakes
       '';
   };
-  
+
   system.stateVersion = "20.09";
 
 }
