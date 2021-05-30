@@ -19,7 +19,7 @@
       };
     };
 
-  nixtst = self.nixosConfigurations.nixtst.config.system.build.toplevel;
+  nixtst = self.nixosConfiguration.nixtst.config.system.build.toplevel;
 
 #  defaultPackage.x86_64-linux = (builtins.head (builtins.attrValue self.nisosConfigurations)).pkgs;
   };
