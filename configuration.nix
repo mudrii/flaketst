@@ -1,20 +1,20 @@
 { config, pkgs, inputs, ... }:
 
-let
+/*let
 
   unstable = import inputs.unstable {
     config = config.nixpkgs.config;
     localSyetem = "x84_64-linux';
   };
 
-in
+in*/
 
 {
 
   imports = [ ./hardware-configuration.nix ];
 
   fileSystems."/" = {options = [ "noatime" "nodiratime" ];};
-  swapDevices = [{ device = "/.swapfile"; }];
+  #swapDevices = [{ device = "/.swapfile"; }];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
